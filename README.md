@@ -6,12 +6,6 @@ Mark present or absent and track attendance percentages automatically.
 Quickly view individual attendance reports to monitor patterns.  
 Ideal for teachers and admins to digitize attendance with ease.
 
-## Features
-- Add student records
-- Attendance marking and reporting
-- Department and year marking
-- User-friendly interface
-
 ## Getting Started
 Clone the repository and follow setup instructions in the documentation.
 Method 1 :-
