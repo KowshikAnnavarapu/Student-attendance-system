@@ -29,7 +29,7 @@ npm run dev
 
 Method 2 :-
 open the projecct location in cmd and type the command : code .
-this will open the project in visual studio and open a new seperate terminals for both backend and frontend and type the codes mentioned in method 1 in the respective terminals 
+this will open the project in visual studio and open a new seperate terminals for both backend and frontend and type the codes mentioned in method 1 in the respective terminals.
 
 
 
