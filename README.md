@@ -35,5 +35,5 @@ this will open the project in visual studio and open a new seperate terminals fo
 
 
 ## Run the project
-once the commands are entered, click on the appeared link by holding down the ctrl key. this will open the project in your default browser            
+once the commands are entered, click on the appeared link by holding down the ctrl key. this will open the project in your default browser.            
 
