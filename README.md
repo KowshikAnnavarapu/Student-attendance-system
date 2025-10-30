@@ -12,7 +12,7 @@ Method 1 :-
 open the project location in cmd and type these commands 
 for backend :  
            cd backend   
-           .\\mvnw.cmd spring-boot:run
+           .\\\\mvnw.cmd spring-boot:run (use one or two blackslashes)
 
 now minimize the command prompt and open another cmd for the same project and type these commands
 for frontend :  
