@@ -1,0 +1,1279 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #1E3A8A;
+  --primary-light: #2563EB;
+  --primary-dark: #1E3A8A;
+  --secondary-color: #2563EB;
+  --accent-color: #60A5FA;
+  --background-color: #F8FAFC;
+  --background-gradient: linear-gradient(to bottom right, #F8FAFC, #E8EDF3);
+  --text-color: #111827;
+  --text-secondary: #6B7280;
+  --success-color: #16A34A;
+  --warning-color: #F59E0B;
+  --error-color: #EF4444;
+  --border-color: #E5E7EB;
+  --card-bg: #FFFFFF;
+  --sidebar-bg: #FFFFFF;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 16px;
+}
+
+/* Dark theme variables */
+.dark {
+  --background-color: #0F172A;
+  --background-gradient: linear-gradient(to bottom right, #0F172A, #1E293B);
+  --card-bg: #1E293B;
+  --sidebar-bg: #111827;
+  --text-color: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --border-color: #334155;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --primary-color: #3B82F6;
+  --primary-light: #60A5FA;
+  --primary-dark: #1D4ED8;
+  --secondary-color: #3B82F6;
+  --accent-color: #93C5FD;
+  --success-color: #22C55E;
+  --warning-color: #FBBF24;
+  --error-color: #F87171;
+}
+
+.dark .page {
+  border: 1px solid var(--border-color);
+}
+
+.dark .nav-item:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.dark .nav-item.active {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.dark .stat-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark table tbody tr:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.dark .form-grid input:focus, 
+.dark .form-grid select:focus, 
+.dark .form-grid textarea:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), var(--shadow-light);
+}
+
+.dark .custom-select select:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-medium);
+}
+
+.dark .status-select select:focus {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2), var(--shadow-light);
+}
+
+.dark .status-select.absent select:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2), var(--shadow-light);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Dropdown Styles */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+select:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 2px 6px rgba(30, 58, 138, 0.15);
+  transform: translateY(-1px);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+}
+
+/* Enhanced Dropdown Styles */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-select select {
+  appearance: none;
+  background-image: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  font-size: 0.95rem;
+  font-family: inherit;
+  box-shadow: var(--shadow-light);
+  padding: 0.875rem 1rem;
+  width: 100%;
+}
+
+.custom-select select:hover {
+  border-color: #D1D5DB;
+  box-shadow: var(--shadow-medium);
+}
+
+.custom-select select:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), var(--shadow-light);
+}
+
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--secondary-color);
+  font-size: 0.7rem;
+  transition: all var(--transition-medium);
+}
+
+.custom-select:hover::after {
+  color: var(--primary-color);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.custom-select select:focus + ::after {
+  color: var(--primary-color);
+}
+
+/* Dropdown Animation */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-container select {
+  transition: all var(--transition-medium);
+}
+
+.dropdown-container select:focus {
+  transform: translateY(-1px);
+}
+
+/* Special styling for attendance status dropdown */
+.status-select.custom-select::after {
+  content: "▼";
+  color: var(--success-color);
+}
+
+.status-select select:focus {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.status-select select:hover {
+  border-color: var(--success-color);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.15);
+}
+
+.status-select.absent::after {
+  color: var(--error-color);
+}
+
+.status-select.absent select:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.status-select.absent select:hover {
+  border-color: var(--error-color);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.15);
+}
+
+/* Year Selection Styling */
+.year-select.custom-select::after {
+  color: var(--primary-color);
+}
+
+.year-select select {
+  font-weight: 500;
+}
+
+.year-select option {
+  padding: 0.5rem;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  box-shadow: var(--shadow-medium);
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem 0;
+  position: fixed;
+  height: 100vh;
+  z-index: 100;
+  transition: var(--transition-medium);
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.logo h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.creator-info {
+  margin-top: auto;
+  padding: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.creator-name {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.creator-email {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.creator-email:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+  margin-right: 1rem;
+  overflow: hidden;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--primary-color);
+  transform: scaleY(0);
+  transition: transform var(--transition-medium);
+}
+
+.nav-item:hover {
+  background-color: rgba(30, 58, 138, 0.06);
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.nav-item:hover::before {
+  transform: scaleY(1);
+}
+
+.nav-item.active {
+  color: var(--primary-color);
+  background-color: rgba(30, 58, 138, 0.1);
+  font-weight: 600;
+}
+
+.nav-item.active::before {
+  transform: scaleY(1);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 2rem;
+  transition: var(--transition-medium);
+  position: relative;
+  /* Allow content to dictate height */
+  height: auto;
+}
+
+/* Dynamic Page Sizing with Animations */
+.page {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp var(--transition-medium) ease-out;
+  transition: all var(--transition-medium);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  /* Allow dynamic sizing based on content */
+  min-height: auto;
+  height: auto;
+}
+
+.page:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.page h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.page h1::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 3px;
+}
+
+.page h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 1.5rem 0 1rem;
+  position: relative;
+  padding-left: 10px;
+}
+
+.page h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Dynamic page with automatic height adjustment */
+.page-dynamic {
+  /* Allow the page to size based on content */
+  height: auto;
+  min-height: auto;
+  /* Add transition for smooth resizing */
+  transition: all var(--transition-medium) ease-in-out;
+}
+
+/* Page transition with dynamic height */
+.page-transition {
+  animation: fadeIn var(--transition-medium) ease-out;
+  transition: all var(--transition-medium);
+  /* Allow dynamic sizing */
+  height: auto;
+}
+
+/* Ensure smooth height transitions */
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 2rem;
+  transition: var(--transition-medium);
+  position: relative;
+  /* Allow content to dictate height */
+  height: auto;
+}
+
+/* Animation for page transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dynamic content containers */
+.students-content,
+.attendance-content,
+.reports-content,
+.dashboard-content {
+  /* Allow content to dictate height */
+  height: auto;
+  transition: all var(--transition-medium) ease-in-out;
+}
+
+/* Form elements with dynamic sizing */
+.form {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-medium);
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-light);
+  /* Allow form to size based on content */
+  height: auto;
+}
+
+.form:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+/* Tables with dynamic sizing */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-fast);
+  /* Allow table to size based on content */
+  height: auto;
+}
+
+/* Stats grid dynamic sizing */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  /* Allow grid to size based on content */
+  height: auto;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-medium);
+  text-align: center;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all var(--transition-medium);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  /* Allow card to size based on content */
+  height: auto;
+}
+
+/* Info grid dynamic sizing */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+  /* Allow grid to size based on content */
+  height: auto;
+}
+
+.info-item {
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-light);
+  /* Allow item to size based on content */
+  height: auto;
+}
+
+/* Report details section with dynamic sizing */
+.report-details {
+  margin-top: 2rem;
+  height: auto;
+  transition: all var(--transition-medium) ease-in-out;
+}
+
+.student-info,
+.statistics,
+.attendance-history {
+  margin-bottom: 2rem;
+  height: auto;
+}
+
+/* Ensure proper spacing for dynamic content */
+.students-content > *,
+.attendance-content > *,
+.reports-content > *,
+.dashboard-content > * {
+  transition: all var(--transition-medium) ease-in-out;
+}
+
+/* Form Elements */
+input, select, textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--shadow-light);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), var(--shadow-light);
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Buttons */
+button {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius-small);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+}
+
+.btn-success {
+  background: var(--success-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #15803D;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(22, 163, 74, 0.3);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, var(--warning-color), #D97706);
+  color: white;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.btn-warning:hover:not(:disabled) {
+  background: linear-gradient(135deg, #D97706, var(--warning-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--error-color), #DC2626);
+  color: white;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: linear-gradient(135deg, #DC2626, var(--error-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: rgba(30, 58, 138, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-fast);
+}
+
+table:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+table thead {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+}
+
+table th {
+  padding: 1rem;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.8px;
+}
+
+table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition-fast);
+  color: var(--text-color);
+}
+
+table tbody tr {
+  transition: all var(--transition-fast);
+}
+
+table tbody tr:hover {
+  background-color: rgba(30, 58, 138, 0.03);
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Forms */
+.form {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-medium);
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-light);
+}
+
+.form:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* Messages */
+.message {
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius-small);
+  margin: 1rem 0;
+  font-weight: 500;
+  border: 1px solid;
+  animation: slideIn 0.3s ease-out;
+  transition: var(--transition-fast);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error-color);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Loading and Error States */
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.125rem;
+  color: var(--text-color);
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-medium);
+  margin: 2rem;
+  box-shadow: var(--shadow-light);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+/* Stats Cards */
+.stat-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-medium);
+  text-align: center;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all var(--transition-medium);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-medium);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 10px rgba(0, 0, 0, 0.1);
+  border-color: rgba(30, 58, 138, 0.2);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.stat-card:hover .stat-value {
+  color: var(--primary-light);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.action-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  min-width: 80px;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  margin-top: 2rem;
+}
+
+.recent-activity, .quick-actions {
+  margin-bottom: 2rem;
+}
+
+.activity-list p {
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-small);
+  margin-bottom: 0.75rem;
+  transition: var(--transition-fast);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+}
+
+.activity-list p:hover {
+  background-color: var(--card-bg);
+  transform: translateX(3px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Student Info */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.info-item {
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-light);
+}
+
+.info-item:hover {
+  background-color: var(--card-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Status Indicators */
+.status-present {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.status-absent {
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+/* Page Transitions */
+.page-transition {
+  animation: fadeIn var(--transition-medium) ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  box-shadow: var(--shadow-medium);
+  z-index: 1000;
+  min-width: 100px;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-heavy);
+  background-color: var(--sidebar-bg);
+}
+
+.theme-toggle-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-icon {
+  transition: all var(--transition-medium);
+  color: var(--text-color);
+}
+
+.theme-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: all var(--transition-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .logo {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .nav-item {
+    white-space: nowrap;
+    border-radius: var(--border-radius-small);
+    margin: 0 0.25rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .page {
+    padding: 1.5rem;
+  }
+  
+  .theme-toggle {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    min-width: 80px;
+  }
+}
+
+/* Sections Container */
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Section Styles */
+.section {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: all var(--transition-medium);
+  overflow: hidden;
+}
+
+.section:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.section-header {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast);
+}
+
+.section-header:hover {
+  background-color: rgba(30, 58, 138, 0.03);
+}
+
+.section-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  border: none;
+  padding: 0;
+}
+
+.section-header h1::after {
+  display: none;
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  transition: transform var(--transition-fast);
+}
+
+.section-header:hover .toggle-icon {
+  transform: scale(1.1);
+}
+
+.section-content {
+  transition: all var(--transition-medium) ease-in-out;
+}
+
+/* Expanded section */
+.section.expanded .section-content {
+  max-height: 10000px; /* Large enough to accommodate content */
+  opacity: 1;
+  padding: 1.5rem;
+}
+
+/* Collapsed section */
+.section.collapsed .section-content {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 1.5rem;
+  overflow: hidden;
+}
+
+/* Ensure immediate children of section-content have proper spacing */
+.section-content > :first-child {
+  margin-top: 0;
+}
+
+.section-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* Adjust page styles for sections */
+.section .page {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-height: auto;
+}
+
+.section .page h1 {
+  font-size: 1.5rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section .page h1::after {
+  display: none;
+}
+
+/* Section Content Wrappers */
+.students-content,
+.attendance-content,
+.reports-content {
+  padding: 1rem 0;
+}
+
+.students-content h2,
+.attendance-content h2,
+.reports-content h2 {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+  padding-left: 0;
+  border: none;
+}
+
+.students-content h2::before,
+.attendance-content h2::before,
+.reports-content h2::before {
+  display: none;
+}
+
+/* Adjust form styles within sections */
+.section .form {
+  margin: 1rem 0;
+}
+
+.section .form h2 {
+  font-size: 1.125rem;
+  margin-top: 0;
+  border: none;
+  padding-left: 0;
+}
+
+.section .form h2::after {
+  display: none;
+}
+
+/* Adjust table styles within sections */
+.section table {
+  margin-top: 1rem;
+}
+
+/* Ensure proper spacing for section content */
+.section-content > div > :first-child {
+  margin-top: 0;
+}
+
+.section-content > div > :last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments for sections */
+@media (max-width: 768px) {
+  .section-header {
+    padding: 1rem;
+  }
+  
+  .section.expanded .section-content {
+    padding: 1rem;
+  }
+  
+  .section.collapsed .section-content {
+    padding: 0 1rem;
+  }
+}
