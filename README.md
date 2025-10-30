@@ -11,13 +11,13 @@ Clone the repository and follow setup instructions in the documentation.
 Method 1 :-
 open the project location in cmd and type these commands 
 for backend :  
-cd backend   
-.\\mvnw.cmd spring-boot:run
+           cd backend   
+           .\\mvnw.cmd spring-boot:run
 
 now minimize the command prompt and open another cmd for the same project and type these commands
 for frontend :  
-cd frontend   
-npm run dev
+            cd frontend   
+            npm run dev
 
 
 
